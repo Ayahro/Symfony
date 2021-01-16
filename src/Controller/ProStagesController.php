@@ -27,19 +27,28 @@ class ProStagesController extends AbstractController
     /**
        * @Route("/entreprises", name="proStages_Entreprises")
        */
-      public function entreprises(): Response
-      {
-          return $this->render('pro_stages/entreprises.html.twig');
-      }
+       public function entreprises(): Response
+    {
 
+      $repositoryEntreprises = $this->getDoctrine()->getRepository(Entreprise::class);
+
+      $entreprises =  $repositoryEntreprises->findAll();
+
+
+        return $this->render('pro_stages/entreprises.html.twig',['entreprises'=>$entreprises]);
+    }
 
       /**
          * @Route("/formations", name="proStages_Formations")
          */
-        public function formations(): Response
-        {
-            return $this->render('pro_stages/formations.html.twig');
-        }
+         public function formations(): Response
+      {
+        $repositoryFormations = $this->getDoctrine()->getRepository(Formation::class);
+
+        $formations =  $repositoryFormations->findAll();
+
+        return $this->render('pro_stages/formations.html.twig', ['formations'=>$formations]);
+      }
 
 
         /**

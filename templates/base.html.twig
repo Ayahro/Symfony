@@ -11,18 +11,38 @@
         {% endblock %}
 
     </head>
-      <body>
+    <body>
 
-      {% block style %}
+        {% block style %}
       <style>
           .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
           .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-
+          .header {
+        padding: 60px;
+        text-align: center;
+        background: #B3D0E1;
+        color: white;
+        font-size: 30px;
+      }
       </style>
+        {% endblock %}
 
-      {% endblock %}
+        {% block header %}
 
-      {% block menu %}
+        <div class="header">
+          <p>  <br />
+          </p>
+          <p></p>
+          <h1>PROSTAGE</h1>
+          <p><small>Numéro 1 dans son domaine</small></p>
+        </div>
+
+
+        {% endblock %}
+
+        {% block menu %}
+
+<!-- Menu de navigation du site -->
       <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -59,34 +79,46 @@
 		</div>
 	</div>
 </div>
-        <!-- Menu de navigation du site -->
-        <p>
-        	<br />
-        </p>
 
-        {% endblock %}
 
-{% block body %}{% endblock %}
-{% block search %}
-
-<div class="col-md-12">
+<!-- Saut de ligne -->
 <p>
   <br />
 </p>
-<center>
-<form class="form-inline" >
-  <input class="form-control mr-sm-2" type="text" />
-  <button class="btn btn-primary my-2 my-sm-0" type="submit">
-    Search
-  </button>
-</form>
-</center>
+
+
+          {% endblock %}
+
+          {% block titreStage %}{% endblock %}
+
+
+          {% block body %}{% endblock %}
+
+
+          {% block search %}
+
+<div class="col-md-12">
+  <p>
+      <br />
+  </p>
+  <center>
+      <form class="form-inline" >
+          <input class="form-control mr-sm-2" type="text" />
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">
+            Search
+          </button>
+      </form>
+  </center>
 </div>
 
-{% endblock %}
-</body>
-        {% block javascripts %}
+          {% endblock %}
+
+  </body>
+
+
+          {% block javascripts %}
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>{% endblock %}
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+         {% endblock %}
 
 </html>

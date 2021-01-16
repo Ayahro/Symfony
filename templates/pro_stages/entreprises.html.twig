@@ -1,11 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 
-    <h1><center>Cette page affichera la liste des entreprises proposant un stage</center></h1>
+
+
+  {% for entrepriseCourant in entreprises %}
+
+  <div class="card">
+
+
+
+
+
+          <div class="container-fluid">
+          	<div class="row">
+          		<div class="col-md-12">
+          			<div class="jumbotron card card-block">
+                  <div class="card-body">
+                    <p>
+                      <img src="{{entrepriseCourant.getLogo}}" width="60" height="60">
+            				</p>
+          				<h4 class="card-title">{{entrepriseCourant.getNom}}</h4>
+          			     <h5 class="card-text">{{entrepriseCourant.getAdresse}}</h5>
+
+                  <h5 class="card-text">Stages proposé : </h5>
+                  {% if entrepriseCourant.stages|length > 0 %}
+                    {% for stage in entrepriseCourant.stages %}
+                      <li>
+                        <a href={{path('proStages_stages',{id:stage.id})}}>{{stage.intitule}}</a>
+                      </li>
+
+
+
+
+        {% endfor %}
+      {% else %}
+          <li>
+              <b>Aucun</b>
+          </li>
+      {% endif %}
+</div>
+</div>
+</div>
+    </div>
+	</div>
+ </div>
+   {% endfor %}
   {% endblock %}

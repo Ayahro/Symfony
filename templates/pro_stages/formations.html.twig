@@ -1,11 +1,33 @@
 {% extends 'base.html.twig' %}
+{% block titre %}
+<h3> ProStages | Formations</h3>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 
-    <h1><center>Cette page affichera la liste des formations de l'IUT</center></h1>
-  {% endblock %}
+<div class="card-deck">
+  {% for formationCourante in formations %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{formationCourante.getIntitule}}</h5>
+      <p class="card-text"></p>
+      <p class="card-text">{{formationCourante.getNiveau}}</p>
+      <p class="card-text">Stages : </p>
+      <ul>
+      {% if formationCourante.stages|length > 0 %}
+        {% for stage in formationCourante.stages %}
+          <li>
+            <a href={{path('proStages_stages',{id:stage.id})}}>{{stage.intitule}}</a>
+          </li>
+        {% endfor %}
+        {% else %}
+          <li>
+            Aucune
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -5,10 +5,17 @@
 {% endblock %}
 
 {% block titreStage %}
-Information - {{stage.intitule}}
+<h4> Information - {{stage.intitule}} </h4>
 {% endblock %}
 
 {% block body %}
+
+
+<!-- Saut de ligne -->
+<p>
+  <br />
+</p>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -17,7 +24,7 @@ Information - {{stage.intitule}}
           Description
         </dt>
         <dd>
-
+          {{stage.description}}
         </dd>
         <dt>
           Créé le
@@ -47,14 +54,14 @@ Information - {{stage.intitule}}
           Entreprise proposant le stage
         </dt>
         <dd>
-          {{stage.entreprises.getNom}}
+          {{stage.entreprise.getNom}}
         </dd>
         <dt>
           Formation proposant le stage
         </dt>
 
         {% for formation in stage.getFormation %}
-          {{formation.nom}}
+          {{formation.intitule}}
           {% if loop.last == false %}
           ,
           {% endif %}
