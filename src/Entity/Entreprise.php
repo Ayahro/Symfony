@@ -34,6 +34,12 @@ class Entreprise
      */
     private $stages;
 
+    /**
+     * @ORM\Column(type="string", length=300)
+     */
+    private $logo;
+
+
     public function __construct()
     {
         $this->stages = new ArrayCollection();
@@ -64,6 +70,19 @@ class Entreprise
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(string $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }

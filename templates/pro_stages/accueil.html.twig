@@ -6,6 +6,31 @@
   {% block body %}
 
 
-<p>Le site ProStages vous permets de consulter en ligne des stages proposés par des entreprises.</p>
 
-  {% endblock %}
+
+
+
+{% for stageCourant in stages %}
+
+<div class="col-md-4">
+ <div class="card">
+
+          <div class="card-body">
+
+
+      				<h5 class="card-title">{{stageCourant.intitule}}</h5>
+
+      				<p class="card-text">
+      					{{stageCourant.description}}
+      				</p>
+
+              <p class="card-text"></p>
+      					<a class="btn btn-primary btn-large" href="{{path('proStages_stages',{id:stageCourant.id})}}">Consulter</a>
+            </div>
+              </div>
+</div>
+
+
+
+{% endfor %}
+{% endblock %}

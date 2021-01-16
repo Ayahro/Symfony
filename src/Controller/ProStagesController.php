@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Stage;
+use App\Entity\Formation;
+use App\Entity\Entreprise;
 
 class ProStagesController extends AbstractController
 {
@@ -13,7 +16,11 @@ class ProStagesController extends AbstractController
      */
     public function accueil(): Response
     {
-        return $this->render('pro_stages/accueil.html.twig');
+      $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+       $stages =  $repositoryStage->findAll();
+
+       return $this->render('pro_stages/accueil.html.twig',['stages'=>$stages]);
     }
 
 
@@ -36,14 +43,17 @@ class ProStagesController extends AbstractController
 
 
         /**
-           * @Route("/stages/{i d}", name="proStages_stages")
+           * @Route("/stages/{id}", name="proStages_stages")
            */
-          public function stages($id): Response
-          {
-              return $this->render('pro_stages/stages.html.twig',
-            ['idStages' => $id ]);
+           public function stages($id): Response
+      {
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
-          }
+        $stage =  $repositoryStage->find($id);
+
+
+          return $this->render('pro_stages/stages.html.twig',['stage' => $stage]);
+      }
 
 
 }

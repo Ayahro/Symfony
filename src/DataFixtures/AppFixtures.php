@@ -38,6 +38,7 @@ class AppFixtures extends Fixture
             $entreprise = new Entreprise();
             $entreprise->setNom($faker->company);
             $entreprise->setAdresse($faker->address);
+            $entreprise->setLogo($faker->imageUrl($width = 300, $height = 300));
             $manager->persist($entreprise);
 
             $nbStages = $faker->numberBetween($min=0, $max=2);

@@ -1,10 +1,66 @@
 {% extends 'base.html.twig' %}
-  {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
+{% block titre %}
+<h3> ProStages | Stage </h3>
+{% endblock %}
 
-    <h1><center>Cette page affichera le descriptif du stage ayant pour identifiant {{idStages}} </center></h1>
-  {% endblock %}
+{% block titreStage %}
+Information - {{stage.intitule}}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <dl>
+        <dt>
+          Description
+        </dt>
+        <dd>
+
+        </dd>
+        <dt>
+          Créé le
+        </dt>
+        <dd>
+          {{stage.dateDebut}}
+        </dd>
+        <dt>
+          Durée
+        </dt>
+        <dd>
+          {{stage.duree}}
+        </dd>
+        <dt>
+          Compétences requises
+        </dt>
+        <dd>
+          {{stage.competencesRequises}}
+        </dd>
+        <dt>
+          Expérience requise
+        </dt>
+        <dd>
+          {{stage.ExperienceRequise}}
+        </dd>
+        <dt>
+          Entreprise proposant le stage
+        </dt>
+        <dd>
+          {{stage.entreprises.getNom}}
+        </dd>
+        <dt>
+          Formation proposant le stage
+        </dt>
+
+        {% for formation in stage.getFormation %}
+          {{formation.nom}}
+          {% if loop.last == false %}
+          ,
+          {% endif %}
+      {% endfor %}
+      </dl>
+    </div>
+  </div>
+</div>
+{% endblock %}
